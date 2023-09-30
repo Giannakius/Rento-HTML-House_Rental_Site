@@ -1,0 +1,441 @@
+[{
+  "_id": {
+    "$oid": "64e7e55b8ad6964647f1f697"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "panos3333",
+  "rating": 3,
+  "reviews": "mplampla"
+},{
+  "_id": {
+    "$oid": "64e7ef179074c99d95de3041"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "panos3333",
+  "rating": 4,
+  "reviews": "mplampla"
+},{
+  "_id": {
+    "$oid": "64e7ef1d9074c99d95de3042"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "panos3333",
+  "rating": 5,
+  "reviews": "mplampla"
+},{
+  "_id": {
+    "$oid": "650249a0335f86ab5a828bb7"
+  },
+  "reviewer": "panos3333",
+  "reviewed": "panos3333",
+  "rating": 5,
+  "reviews": "MAGKAS"
+},{
+  "_id": {
+    "$oid": "6516ae328e3b4d714297841b"
+  },
+  "reviewer": "panos3333",
+  "reviewed": "panos3333",
+  "rating": 2,
+  "reviews": "aed"
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4038"
+  },
+  "reviewer": "eyXPd",
+  "reviewed": "BZGAq",
+  "rating": 2,
+  "reviews": "Πολύ κακή εμπειρία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4039"
+  },
+  "reviewer": "UfGTV",
+  "reviewed": "GSCOO",
+  "rating": 1,
+  "reviews": "Πολύ ευγενικός χρήστης."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403a"
+  },
+  "reviewer": "RBtaH",
+  "reviewed": "a",
+  "rating": 5,
+  "reviews": "Αξίζει τον κόπο."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403b"
+  },
+  "reviewer": "d",
+  "reviewed": "tTkAj",
+  "rating": 5,
+  "reviews": "Ευχαρίστησα για τη βοήθειά του."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403c"
+  },
+  "reviewer": "test3",
+  "reviewed": "Tgozx",
+  "rating": 2,
+  "reviews": "Θετική εμπειρία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403d"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "BpHgv",
+  "rating": 2,
+  "reviews": "Πολύ καλός επαγγελματίας."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403e"
+  },
+  "reviewer": "test",
+  "reviewed": "test3",
+  "rating": 2,
+  "reviews": "Πολύ αργός στην ανταπόκριση."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae403f"
+  },
+  "reviewer": "dZKjT",
+  "reviewed": "bGSIL",
+  "rating": 1,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4040"
+  },
+  "reviewer": "gtRaN",
+  "reviewed": "BpHgv",
+  "rating": 5,
+  "reviews": "Καλή συνεργασία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4041"
+  },
+  "reviewer": "Xqtfh",
+  "reviewed": "gtRaN",
+  "rating": 3,
+  "reviews": "Καλός χρήστης."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4042"
+  },
+  "reviewer": "vzvym",
+  "reviewed": "rkBll",
+  "rating": 2,
+  "reviews": "Ευχαρίστησα για τη βοήθειά του."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4043"
+  },
+  "reviewer": "z",
+  "reviewed": "BpHgv",
+  "rating": 5,
+  "reviews": "Συνεργάσιμος και φιλικός."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4044"
+  },
+  "reviewer": "vzvym",
+  "reviewed": "RuJtr",
+  "rating": 1,
+  "reviews": "Πολύ καλή εξυπηρέτηση."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4045"
+  },
+  "reviewer": "rkBll",
+  "reviewed": "Nikos",
+  "rating": 4,
+  "reviews": "Εξαιρετική εξυπηρέτηση."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4046"
+  },
+  "reviewer": "BZGAq",
+  "reviewed": "b",
+  "rating": 2,
+  "reviews": "Ευχαριστώ."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4047"
+  },
+  "reviewer": "Hnygx",
+  "reviewed": "ONDOO",
+  "rating": 2,
+  "reviews": "Κακή εμπειρία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4048"
+  },
+  "reviewer": "ONDOO",
+  "reviewed": "POSTMAN",
+  "rating": 3,
+  "reviews": "Αργός στην ανταπόκριση."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4049"
+  },
+  "reviewer": "ozVew",
+  "reviewed": "eqoyk",
+  "rating": 4,
+  "reviews": "Μετριότητα."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404a"
+  },
+  "reviewer": "rxNzg",
+  "reviewed": "RuJtr",
+  "rating": 4,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404b"
+  },
+  "reviewer": "gtRaN",
+  "reviewed": "Tgozx",
+  "rating": 2,
+  "reviews": "Καλός χρήστης."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404c"
+  },
+  "reviewer": "zEOpd",
+  "reviewed": "gtRaN",
+  "rating": 5,
+  "reviews": "Πολύ κακή εμπειρία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404d"
+  },
+  "reviewer": "bBaBv",
+  "reviewed": "a",
+  "rating": 1,
+  "reviews": "Πολύ αργή ανταπόκριση."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404e"
+  },
+  "reviewer": "TmZWI",
+  "reviewed": "RuJtr",
+  "rating": 4,
+  "reviews": "Δεν συνιστάται."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae404f"
+  },
+  "reviewer": "dZKjT",
+  "reviewed": "TmZWI",
+  "rating": 4,
+  "reviews": "Μετριότητα."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4050"
+  },
+  "reviewer": "HdbtR",
+  "reviewed": "UfGTV",
+  "rating": 1,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4051"
+  },
+  "reviewer": "b",
+  "reviewed": "OfPBG",
+  "rating": 4,
+  "reviews": "Ευχαρίστησα για τη βοήθειά του."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4052"
+  },
+  "reviewer": "test2",
+  "reviewed": "panos333355",
+  "rating": 3,
+  "reviews": "Δεν είμαι ικανοποιημένος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4053"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "TestUsername",
+  "rating": 4,
+  "reviews": "Καλός συνεργάτης."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4054"
+  },
+  "reviewer": "Nikos",
+  "reviewed": "tTkAj",
+  "rating": 3,
+  "reviews": "Εξαιρετικός χρήστης."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4055"
+  },
+  "reviewer": "OfPBG",
+  "reviewed": "TestUsername",
+  "rating": 5,
+  "reviews": "Πολύ αξιόπιστος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4056"
+  },
+  "reviewer": "test",
+  "reviewed": "Papaflesas",
+  "rating": 5,
+  "reviews": "Δεν είμαι ικανοποιημένος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4057"
+  },
+  "reviewer": "ONDOO",
+  "reviewed": "jcftv",
+  "rating": 1,
+  "reviews": "Τα πήγε καλά."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4058"
+  },
+  "reviewer": "Hnygx",
+  "reviewed": "NwmwS",
+  "rating": 5,
+  "reviews": "Δυσκολία στην επικοινωνία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4059"
+  },
+  "reviewer": "test",
+  "reviewed": "zEOpd",
+  "rating": 2,
+  "reviews": "Ευγενικός και επαγγελματικός."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405a"
+  },
+  "reviewer": "RuJtr",
+  "reviewed": "hhwaY",
+  "rating": 4,
+  "reviews": "Δεν είμαι ικανοποιημένος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405b"
+  },
+  "reviewer": "zEOpd",
+  "reviewed": "UfGTV",
+  "rating": 1,
+  "reviews": "Πολύ αξιόπιστος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405c"
+  },
+  "reviewer": "eyXPd",
+  "reviewed": "BpHgv",
+  "rating": 2,
+  "reviews": "Πολύ καλή συνεργασία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405d"
+  },
+  "reviewer": "bBaBv",
+  "reviewed": "BZGAq",
+  "rating": 1,
+  "reviews": "Πολύ αξιόπιστος."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405e"
+  },
+  "reviewer": "ONDOO",
+  "reviewed": "dZKjT",
+  "rating": 4,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae405f"
+  },
+  "reviewer": "BZGAq",
+  "reviewed": "jcftv",
+  "rating": 5,
+  "reviews": "Ευχαρίστησα για τη βοήθειά του."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4060"
+  },
+  "reviewer": "TmZWI",
+  "reviewed": "hhwaY",
+  "rating": 2,
+  "reviews": "Ευχαρίστησα για τη βοήθειά του."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4061"
+  },
+  "reviewer": "bGSIL",
+  "reviewed": "PcFRr",
+  "rating": 3,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4062"
+  },
+  "reviewer": "OqHlm",
+  "reviewed": "RBtaH",
+  "rating": 3,
+  "reviews": "Τα πήγε καλά."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4063"
+  },
+  "reviewer": "test3",
+  "reviewed": "PcFRr",
+  "rating": 2,
+  "reviews": "Δεν το περίμενα τόσο καλό."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4064"
+  },
+  "reviewer": "a",
+  "reviewed": "OfPBG",
+  "rating": 2,
+  "reviews": "Συνεργάσιμος και φιλικός."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4065"
+  },
+  "reviewer": "jcftv",
+  "reviewed": "gtRaN",
+  "rating": 1,
+  "reviews": "Ευχαριστώ."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4066"
+  },
+  "reviewer": "TestUsername",
+  "reviewed": "Hnygx",
+  "rating": 3,
+  "reviews": "Καλή εμπειρία."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4067"
+  },
+  "reviewer": "Xqtfh",
+  "reviewed": "TestUsername",
+  "rating": 4,
+  "reviews": "Πρόβλημα με τον χρήστη."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4068"
+  },
+  "reviewer": "test",
+  "reviewed": "d",
+  "rating": 3,
+  "reviews": "Ευχαριστώ."
+},{
+  "_id": {
+    "$oid": "65170a6aae8eeab24eae4069"
+  },
+  "reviewer": "RuJtr",
+  "reviewed": "Papaflesas",
+  "rating": 4,
+  "reviews": "Ευγενικός και επαγγελματικός."
+}]
