@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+<head>
+    <link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <title>Rento Login</title>
+    <link rel="stylesheet" href="stylelogin.css">
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="title">
+        Rento Login
+    </div>
+    <form id="loginform">
+        <div class="field">
+            <input id="username" type="text" required>
+            <label>Username</label>
+        </div>
+        <div class="field">
+            <input id="password" type="password" required>
+            <label>Password</label>
+        </div>
+        <div class="content">
+            <div class="checkbox">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <div class="pass-link">
+                <a href="/password">Forgot password?</a>
+            </div>
+        </div>
+        <div class="field">
+            <input type="submit" value="Login">
+        </div>
+        <div class="signup-link">
+            Not a member? <a href="/register">Signup now</a>
+        </div>
+    </form>
+    <script>
+        document.getElementById("loginform").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+
+            const xhr = new XMLHttpRequest();
+            const url = "/loginuser"; // Replace with your Node.js server URL
+
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            const token_ananonymous = document.cookie.split('; ').find(row => row.startsWith('token_ananonymous'));
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        window.location.href = "/logout_anonymous";
+                          } else if (xhr.status === 201) {
+                        window.location.href = "/approveusers";
+                    }else if (xhr.status === 401) {
+                        alert("Wrong Credentials");
+                    } else if (xhr.status === 402) {
+                        alert("Your Account must be approved by an admin in order to log in");
+                    } else {
+                        alert("Login failed: Error occurred");
+                    }
+                }
+            };
+
+            const data = JSON.stringify({ username: username, password: password });
+            xhr.send(data);
+
+        });
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   <link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+   <!-- basic 
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
+   <!-- site metas -->
+   <title>Sale Square</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" type="text/css"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="css/anazitisi-homepage.css">
+   <link rel="stylesheet" type="text/css" href="homepagestyle.css" />
+   <!-- Unicons -->
+   <link rel="stylesheet" type="text/css" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+   <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   <script src="https://kit.fontawesome.com/afea27c44a.js" crossorigin="anonymous"></script>
+
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+
+   <!-- SCROLL TOP BUTTON -->
+   <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">Top ↑</button>
+   <script>
+      // Get the button
+      let mybutton = document.getElementById("scrollTopBtn");
+      
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      </script>
+
+   <header>
+
+      <link rel="stylesheet" type="text/css" href="Pages/SearchBar/style.css">
+      <nav>
+         <ul>
+            <li>
+               <a href="/">Home</a>
+            </li>
+            <li>
+               <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+               <a href="/housesearch">Search Houses</a>
+            </li>
+            <li>
+               <a href="/contactus">Contact Us</a>
+            </li>
+            <li>
+               <div class="dropdown">
+                  <a id="loginbutton" href="/login">Login &#9662;</a>
+                  <div id="edrop" class="dropdown-content">
+                     <a href="/logout">Logout</a>
+                  </div>
+               </div>
+            </li>
+         </ul>
+      </nav>
+   </header>
+   <img class="header-border" src="images/brush-line.png" alt="">
+
+
+   <script>
+
+      document.addEventListener('DOMContentLoaded', () => {
+         const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+         const anonymous_token = document.cookie.split('; ').find(row => row.startsWith('anonymous_token'));
+         if (token) {
+            document.getElementById('loginbutton').textContent = "Account";
+            document.getElementById('loginbutton').href = "/account";
+            document.getElementById("edrop").style.visibility = "visible";
+         } else if(anonymous_token){console.log("anonymous user");}
+         else{
+         
+            const xhr = new XMLHttpRequest();
+            const url = "/addanonymous"; 
+
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () {
+               if (xhr.readyState === 4) {
+                  if (xhr.status === 201) {
+                     window.location.href = "/";
+                  } 
+               }
+            };
+
+            const data = JSON.stringify({});
+            xhr.send(data);
+         }
+
+      });
+   </script>
+
+   <section class="banner_main">
+
+      <div class="container">
+         <div class="row d_flex">
+            <div class="col-md-12">
+               <div class="text-bg">
+                  <h1>Find the best Houses To Rent</h1>
+                  <span>Where Dreams Find Home</span>
+                  <p>Discover Your Perfect Retreat - Unforgettable Vacation Rentals </p>
+
+               </div>
+            </div>
+         </div>
+         <div class="tm-section tm-bg-img" id="tm-section-1">
+            <div class="tm-bg-white ie-container-width-fix-2">
+               <div class="container ie-h-align-center-fix">
+                  <div class="row">
+                     <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                        <form action="https://rento.panosgio.org:4000/housesearch" method="get"
+                           class="tm-search-form tm-section-pad-2">
+                           <div class="form-row tm-search-form-row">
+                              <div class="form-group tm-form-element tm-form-element-100">
+                                 <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                 <input name="city" type="text" class="form-control" id="inputCity"
+                                    placeholder="City Location">
+                              </div>
+
+
+                              <div class="form-group tm-form-element tm-form-element-50">
+                                 <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                 <input name="checkin" type="date" class="form-control" id="inputCheckIn"
+                                    placeholder="Check In" required>
+                              </div>
+
+
+                              <div class="form-group tm-form-element tm-form-element-50">
+                                 <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+                                 <input name="checkout" type="date" class="form-control" id="inputCheckOut"
+                                    placeholder="Check Out" required>
+                              </div>
+
+
+                           </div>
+                           <div class="form-row tm-search-form-row">
+                              <div class="form-group tm-form-element tm-form-element-2">
+                                 <select name="persons" class="form-control tm-select" id="persons" required>
+                                    <option value="" disabled selected>Persons</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                 </select>
+                                 <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                              </div>
+                              <div class="form-group tm-form-element tm-form-element-2">
+                                 <select name="housetype" class="form-control tm-select" id="housetype" required>
+                                    <option value="false" disabled selected>House Type</option>
+                                    <option value="Hotel">Hotel</option>
+                                    <option value="Airbnb">Airbnb</option>
+                                    <option value="Rent">Rent</option>
+
+                                 </select>
+                                 <i class="fa fa-2x fa-user tm-form-element-icon"></i>
+                              </div>
+                              <div class="form-group tm-form-element tm-form-element-2">
+
+                                 <select name="bedrooms" class="form-control tm-select" id="bedrooms" required>
+
+                                    <option value="false" disabled selected>Bedrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                 </select>
+
+                                 <i class="fa fa-2x fa-home tm-form-element-icon"></i>
+                              </div>
+                              <div class="form-group tm-form-element tm-form-element-2">
+                                 <button type="submit" class="btn btn-primary tm-btn-search">Check Availability</button>
+                              </div>
+                           </div>
+                        </form>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+
+
+      </div>
+
+
+   </section>
+   </div>
+   <!-- end banner -->
+
+
+
+
+
+   <!--First Card Listing-->
+   <div class="container-fluid p-5" style="background-color: var(--bg-color);">
+      <div class="row g-2 justify-content-center">
+         <div class="col-8 col-lg-12 text-center pb-5">
+            <span>LISTING</span>
+            <h2>Popular Listing</h2>
+         </div>
+         <div id="houseContainer" class="row"></div>
+
+
+         <script>
+            // Function to fetch and display houses
+            function fetchHouses() {
+               // You can replace this URL with the actual API endpoint that provides house data in JSON format.
+               const apiUrl = '/getpopularrents';
+
+               // Make an AJAX request to fetch the house data
+               fetch(apiUrl)
+                  .then((response) => response.json())
+                  .then((data) => {
+                     const houseContainer = document.getElementById('houseContainer');
+
+                     // Clear any existing content in the container
+                     houseContainer.innerHTML = '';
+
+                     // Loop through the fetched data and create house cards
+                     data.slice(0, 5).forEach((house, star_rating) => {
+
+
+                        const houseCard = document.createElement('div');
+                        houseCard.className = 'col-md-6 col-lg-3';
+                        houseCard.innerHTML =
+                           `
+                           <div class="card height-whole-card">
+          <a href="https://rento.panosgio.org:4000/house?id=${house._id}" target = "_blank"><img src="/getimage/${house.image[0]}" class="vh-image-top-card" alt="..." ></a>
+
+             <div class="mx-auto">
+                <div class="d-flex justify-content-center align-content-center icon-position-bg">
+                   <i class="fas fa-hamburger icon-position fs-2 text-white"></i>
+                </div>
+             </div>
+             <div class="card-body text-center">
+                <span class="card-title text-danger">${house.housetype}</span>
+                <h4 class="card-text">${house.housename}</h4>
+                <div><span><i class="fas fa-location-pin text-danger"></i></span> <span class="text-secondary">${house.address + ", " + house.city}</span></div>
+                <div>
+                   <img src="images/price.png" alt="Image Description" width="20" height="20">
+                   <span class="text-secondary">${house.price} $ / day</span>
+                   <hr>
+                   <div>
+              <p>${house.averageRating}  Stars</p>
+           </div>
+                </div>
+             </div>
+          </div>
+        `;
+                        houseContainer.appendChild(houseCard);
+
+                     });
+                  })
+                  .catch((error) => {
+                     console.error('Error fetching houses:', error);
+                  });
+            }
+
+            // Function to create stars based on the rating
+
+            // Call the fetchHouses function to initially load houses
+            fetchHouses();
+
+         </script>
+
+
+      </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- choose  section -->
+   <div class="choose ">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage">
+                  <h2>Why Choose Us</h2>
+                  <div class="choose_box">
+                     <i><img src="images/small1.png" alt="#" /></i>
+                  </div>
+                  <span> Looking for a reliable and convenient way to rent houses, villas, and other vacation
+                     properties? Look no further than our rental platform. We offer an extensive selection of properties
+                     in some of the most beautiful and sought-after destinations around the world. Our easy booking
+                     process, competitive rates, and reliable support make us the perfect choice for your next vacation
+                     rental. With a rigorous screening process for our properties, you can trust that your rental will
+                     be safe and comfortable. Let us help you create an unforgettable vacation experience, filled with
+                     new cultures, places, and memories. Choose us for your next vacation rental and get ready to start
+                     making memories that will last a lifetime.</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- end choose  section -->
+   <!-- cutomer -->
+   <div class="cutomer">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage">
+                  <h2>What is says our cutomer</h2>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <div id="myCarousel" class="carousel slide cutomer_Carousel " data-ride="carousel">
+                  <ol class="carousel-indicators">
+                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                     <li data-target="#myCarousel" data-slide-to="1"></li>
+                     <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <div class="container">
+                           <div class="carousel-caption ">
+                              <div class="cross_img">
+                                 <figure><img src="images/customer1.jpg" alt="#" /></figure>
+                              </div>
+                              <div class="our cross_layout">
+                                 <div class="test_box">
+                                    <h4>Kiriakos Mitsotakis</h4>
+                                    <span>Prime Minister of Greece</span>
+                                    <p>I recently used this rent house company for my family vacation, and I couldn't be
+                                       happier with the experience. The selection of properties was extensive, and the
+                                       booking process was a breeze. We stayed in a gorgeous villa with stunning ocean
+                                       views and had everything we needed for a comfortable and enjoyable stay. I highly
+                                       recommend this company to anyone looking for a reliable and convenient vacation
+                                       rental.</p>
+                                    <i><img src="images/te1.png" alt="#" /></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="container">
+                           <div class="carousel-caption">
+                              <div class="cross_img">
+                                 <figure><img src="images/customer2.jpg" alt="#" /></figure>
+                              </div>
+                              <div class="our cross_layout">
+                                 <div class="test_box">
+                                    <h4>Dimitris Melisanidis</h4>
+                                    <span>President of football sports team Aek</span>
+                                    <p>I've used this rent house company multiple times, and each experience has been
+                                       fantastic. The staff is always available to answer any questions or concerns, and
+                                       they go above and beyond to ensure that your rental experience is smooth and
+                                       stress-free. The properties are well-maintained and always exceed my
+                                       expectations. I wouldn't hesitate to recommend this company to anyone looking for
+                                       a top-notch vacation rental.</p>
+                                    <i><img src="images/te1.png" alt="#" /></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="carousel-item">
+                        <div class="container">
+                           <div class="carousel-caption">
+                              <div class="cross_img">
+                                 <figure><img src="images/customer3.jpg" alt="#" /></figure>
+                              </div>
+                              <div class="our cross_layout">
+                                 <div class="test_box">
+                                    <h4>Bill Gates</h4>
+                                    <span>Businessman</span>
+                                    <p>I recently stayed in one of the properties offered by this rent house company,
+                                       and it was a truly unforgettable experience. The property was beautiful and
+                                       well-appointed, with all the amenities you could ask for. The staff was friendly
+                                       and responsive, making sure that our stay was comfortable and enjoyable. I would
+                                       definitely use this company again for my next vacation rental and highly
+                                       recommend them to anyone looking for a great place to stay.</p>
+                                    <i><img src="images/te1.png" alt="#" /></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Next</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- end cutomer -->
+   <!--  footer -->
+   <footer>
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="cont_call">
+                     <h3> <strong class="multi color_chang"> Need Help ? </strong><br>
+                        <button class="sign_btn"><a href="/contactus">Send Us a Message</a></button>
+                     </h3>
+                  </div>
+                  <div class="cont">
+                     <h3> <strong class="multi"> Number One </strong>
+                        Rental Website Worldwide.
+                     </h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <p>© 2023 ~ Tournis Ioannis - Giovanos Panagiotis.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="js/jquery.min.js"></script>
+   <!-- <script src="js/popper.min.js"></script> -->
+   <script src="js/bootstrap.bundle.min.js"></script> <!-- CAROUSEL SCRIPT-->
+   <!--<script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script> -->
+   <!-- sidebar -->
+   <!-- <script src="js/jquery.mCustomScrollbar.concat.min.js"></script> -->
+   <script src="js/custom.js"></script>
+   <!-- <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,521 @@
+<html lang="en">
+
+<head>
+	<link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+	<meta charset="UTF-8">
+	<title>User Details</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/accountsettingsstyle.css">
+</head>
+
+<body>
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<div class="right-align">
+				<a href="/dashboard" class="btn btn-primary">Return Back</a>
+			</div>
+			<h1 class="mb-5">User Details</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img id="userphoto" alt="Image" width="200" height="200" class="shadow">
+						</div>
+
+						<h4 id="userflname" class="text-center"></h4>
+
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
+							aria-controls="account" aria-selected="true">
+							<i class="fa fa-home text-center mr-1"></i>
+							User Details
+						</a>
+
+						<!-- Νέα καρτέλα "Review Owner" -->
+						<a class="nav-link" id="review-tab" data-toggle="pill" href="#review" role="tab"
+							aria-controls="review" aria-selected="false">
+							<i class="fa fa-user text-center mr-1"></i>
+							Review Owner
+						</a>
+					</div>
+
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link" id="contactowner">
+							<i class="fa fa-home text-center mr-1"></i>
+							Contact Owner
+						</a>
+					</div>
+
+					<script>
+
+						document.getElementById('contactowner').addEventListener('click', function () {
+
+							var url = '/contactus?email=' + document.getElementById('email').textContent;
+							window.location.href = url;
+						});
+
+					</script>
+
+
+				</div>
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+						<h3 id="username" class="mb-4">..</h3>
+						<id="userForm">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>First Name :</label>
+										<h31><span id="firstName"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Last Name :</label>
+										<h31><span id="lastName"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Email :</label>
+										<h31><span id="email"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Phone number :</label>
+										<h31> <span id="phone"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Gender :</label>
+										<h31><span id="gender"></span></h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Houses Owned :</label>
+										<h31><span id="rents"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Roles :</label>
+										<h31><span id="roles"></span> </h31>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Rating :</label>
+										<h31><span id="rating"></span> </h31>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Total Reviews :</label>
+										<h31><span id="reviews"></span> </h31>
+									</div>
+								</div>
+
+							</div>
+
+
+
+							<a class="btn btn-primary" id="checkUserListings">Check User House Listings.</a>
+							<script>
+								var url = location.href;
+								const queryString = url.split("?")[1];
+								const id = queryString.split("=")[1];
+								const link = document.getElementById('checkUserListings'); // Επιλέξτε τον σύνδεσμο με το ID checkUserListings
+								link.href = `/gethousesbyuser?id=${id}`; // Ορίστε το href του συνδέσμου
+							</script>
+
+
+					</div>
+
+
+					<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+
+						<div class="wrapper">
+							<div class="master">
+								<h1>Review And rating</h1>
+								<h2>How was your experience about this Owner?</h2>
+
+								<div class="rating-component">
+									<div class="status-msg">
+										<label>
+											<input class="rating_msg" type="hidden" name="rating_msg" value="" />
+										</label>
+									</div>
+									<div class="stars-box">
+										<i class="star fa fa-star" title="1 star" data-message="Poor"
+											data-value="1"></i>
+										<i class="star fa fa-star" title="2 stars" data-message="Too bad"
+											data-value="2"></i>
+										<i class="star fa fa-star" title="3 stars" data-message="Average quality"
+											data-value="3"></i>
+										<i class="star fa fa-star" title="4 stars" data-message="Nice"
+											data-value="4"></i>
+										<i class="star fa fa-star" title="5 stars" data-message="very good qality"
+											data-value="5"></i>
+									</div>
+									<div class="starrate">
+										<label>
+											<input class="ratevalue" type="hidden" name="rate_value" value="" />
+										</label>
+									</div>
+								</div>
+
+								<div class="feedback-tags">
+									<div class="tags-container" data-tag-set="1">
+										<div class="question-tag">
+											Why was your experience so bad?
+										</div>
+									</div>
+									<div class="tags-container" data-tag-set="2">
+										<div class="question-tag">
+											Why was your experience so bad?
+										</div>
+
+									</div>
+
+									<div class="tags-container" data-tag-set="3">
+										<div class="question-tag">
+											Why was your average rating experience ?
+										</div>
+									</div>
+									<div class="tags-container" data-tag-set="4">
+										<div class="question-tag">
+											Why was your experience good?
+										</div>
+									</div>
+
+									<div class="tags-container" data-tag-set="5">
+										<div class="make-compliment">
+											<div class="compliment-container">
+												Give a compliment
+												<i class="far fa-smile-wink"></i>
+											</div>
+										</div>
+									</div>
+
+									<div class="tags-box">
+										<input type="text" class="tag form-control" name="comment" id="reviewinput"
+											placeholder="please enter your review">
+										<input type="hidden" name="product_id" value="{{ $products->id }}" />
+									</div>
+
+								</div>
+
+								<div class="button-box">
+									<input type="submit" class=" done btn btn-warning" disabled="disabled"
+										value="Add review" />
+								</div>
+
+								<div class="submited-box">
+									<div class="loader"></div>
+									<div class="success-message">
+										Thank you!
+									</div>
+								</div>
+							</div>
+
+						</div>
+						</form>
+
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+						<script>
+							var star_rating = 0;
+
+							$(".rating-component .star").on("mouseover", function () {
+								var onStar = parseInt($(this).data("value"), 10); //
+								star_rating = onStar;
+								$(this).parent().children("i.star").each(function (e) {
+									if (e < onStar) {
+										$(this).addClass("hover");
+									} else {
+										$(this).removeClass("hover");
+									}
+								});
+							}).on("mouseout", function () {
+								$(this).parent().children("i.star").each(function (e) {
+									$(this).removeClass("hover");
+								});
+							});
+
+							$(".rating-component .stars-box .star").on("click", function () {
+								var onStar = parseInt($(this).data("value"), 10);
+								var stars = $(this).parent().children("i.star");
+								var ratingMessage = $(this).data("message");
+
+								var msg = "";
+								if (onStar > 1) {
+									msg = onStar;
+								} else {
+									msg = onStar;
+								}
+								$('.rating-component .starrate .ratevalue').val(msg);
+
+
+
+								$(".fa-smile-wink").show();
+
+								$(".button-box .done").show();
+
+								if (onStar === 5) {
+									$(".button-box .done").removeAttr("disabled");
+								} else {
+									$(".button-box .done").attr("disabled", "true");
+								}
+
+								for (i = 0; i < stars.length; i++) {
+									$(stars[i]).removeClass("selected");
+								}
+
+								for (i = 0; i < onStar; i++) {
+									$(stars[i]).addClass("selected");
+								}
+
+								$(".status-msg .rating_msg").val(ratingMessage);
+								$(".status-msg").html(ratingMessage);
+								$("[data-tag-set]").hide();
+								$("[data-tag-set=" + onStar + "]").show();
+							});
+
+							$(".feedback-tags  ").on("click", function () {
+								var choosedTagsLength = $(this).parent("div.tags-box").find("input").length;
+								choosedTagsLength = choosedTagsLength + 1;
+
+								if ($(this).hasClass("choosed")) {
+									$(this).removeClass("choosed");
+									choosedTagsLength = choosedTagsLength - 2;
+								} else {
+									$(this).addClass("choosed");
+									$(".button-box .done").removeAttr("disabled");
+								}
+
+								console.log(choosedTagsLength);
+
+								if (choosedTagsLength <= 0) {
+									$(".button-box .done").attr("enabled", "false");
+								}
+							});
+
+
+
+							$(".compliment-container .fa-smile-wink").on("click", function () {
+								$(this).fadeOut("slow", function () {
+									$(".list-of-compliment").fadeIn();
+								});
+							});
+
+
+
+							$(".done").on("click", function () {
+								$(".rating-component").hide();
+								$(".feedback-tags").hide();
+								$(".button-box").hide();
+								$(".submited-box").show();
+								$(".submited-box .loader").show();
+
+								setTimeout(function () {
+									$(".submited-box .loader").hide();
+									$(".submited-box .success-message").show();
+								}, 1500);
+
+								var url = location.href;
+								const queryString = url.split("?")[1];
+								const id = queryString.split("=")[1];
+								const reviewinput = document.getElementById('reviewinput');
+
+
+								const requestBody = {
+									reviews: reviewinput.value,
+									rating: star_rating,
+									reviewed: id,
+								};
+
+
+								fetch('/adduserreview', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json'
+									},
+									body: JSON.stringify(requestBody)
+								})
+									.then(response => response.text())
+									.then(result => {
+										// console.log(result);
+
+									})
+									.catch(error => {
+										console.error(error);
+										alert('An error occurred');
+									});
+
+							});
+						</script>
+
+
+
+
+
+
+
+						<!-- Comments Box -->
+
+						<link rel="stylesheet" href="css/comments_style.css">
+
+						<h2>Comments about this Owner.</h2>
+
+						<section class="main">
+							<div class="full-boxer">
+								<div id="commentsContainer"></div>
+							</div>
+						</section>
+
+
+						<!-- End Comments Box -->
+						<script src="scriptreview.js"></script>
+
+
+
+
+
+
+						<script>
+							document.addEventListener('DOMContentLoaded', () => {
+								const firstName = document.getElementById('firstName');
+								const username = document.getElementById('username');
+								const lastName = document.getElementById('lastName');
+								const email = document.getElementById('email');
+								const phone = document.getElementById('phone');
+								const gender = document.getElementById('gender');
+								const rents = document.getElementById('rents');
+								const roles = document.getElementById('roles');
+								const rating = document.getElementById('rating');
+								const reviews = document.getElementById('reviews');
+								const usphoto = document.getElementById('userphoto');
+								// Function to fetch user data and populate the form
+
+								function fetchRent() {
+									var url = location.href;
+									const queryString = url.split("?")[1];
+									const id = queryString.split("=")[1];
+
+									fetch('/getuserpublic/' + id)
+										.then(response => response.json())
+										.then(userd => {
+											if (userd) {
+												firstName.textContent = userd.firstName;
+												username.textContent = userd.username;
+												lastName.textContent = userd.lastName;
+												email.textContent = userd.email;
+												phone.textContent = userd.phone;
+												gender.textContent = userd.gender;
+												rents.textContent = userd.rentcount;
+												roles.textContent = userd.roles;
+												rating.textContent = userd.rating;
+												reviews.textContent = userd.reviews;
+
+												const urlParams = new URLSearchParams(window.location.search);
+
+												const imageName = userd.image; // Assuming the user object has the image filename
+
+												// Set the image source dynamically
+												usphoto.src = '/getimage/' + imageName;
+												//form.elements.roles.value = user.roles.join(', '); // assuming roles is an array of strings
+												// You might need to handle the image separately depending on how it is stored in the database
+												// form.elements.image.value = user.image;
+											} else {
+												alert('Rent not found');
+											}
+										})
+										.catch(error => {
+											console.error(error);
+											alert('An error occurred');
+										});
+								}
+
+								// Fetch user data when the page loads
+								fetchRent('');
+
+
+
+
+							});
+						</script>
+						<script>
+							document.addEventListener('DOMContentLoaded', () => {
+								const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+								if (token) {
+									const form = document.getElementById('userForm');
+									const flname = document.getElementById('userflname');
+									const usphoto = document.getElementById('userphoto');
+									// Function to fetch user data and populate the form
+
+									function fetchUser() {
+										fetch('/getuser/')
+											.then(response => response.json())
+											.then(user => {
+												if (user) {
+													flname.textContent = user.firstName + " " + user.lastName;
+													form.elements.firstName.value = user.firstName;
+													form.elements.lastName.value = user.lastName;
+													form.elements.email.value = user.email;
+													form.elements.phone.value = user.phone;
+
+													const urlParams = new URLSearchParams(window.location.search);
+
+													const imageName = user.image; // Assuming the user object has the image filename
+
+													// Set the image source dynamically
+													usphoto.src = '/getimage/' + imageName;
+													//form.elements.roles.value = user.roles.join(', '); // assuming roles is an array of strings
+													// You might need to handle the image separately depending on how it is stored in the database
+													// form.elements.image.value = user.image;
+												} else {
+													alert('User not found');
+												}
+											})
+											.catch(error => {
+												console.error(error);
+												alert('An error occurred');
+											});
+									}
+
+									// // Fetch user data when the page loads
+									// fetchUser('');
+									// 	} else {
+									// window.location.href = "/login";
+								}
+
+
+
+							});
+						</script>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

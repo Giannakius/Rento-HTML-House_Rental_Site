@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-grid.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+
+  <title>House Details Page</title>
+  <link rel="stylesheet" href="stylehouse.css">
+  <link rel="stylesheet" href="lightbox.min.css">
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Ubuntu&display=swap">
+  <script src="https://kit.fontawesome.com/afea27c44a.js" crossorigin="anonymous"></script>
+
+
+  <style>
+    #right-text {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+    </style>
+</head>
+
+<header>
+
+  <link rel="stylesheet" type="text/css" href="stylebar.css">
+
+
+  <nav style="text-align: center;">
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/housesearch">Search Houses</a>
+      </li>
+      <li>
+        <a href="/contactus">Contact Us</a>
+      </li>
+      <li>
+        <div class="dropdown">
+          <a id="loginbutton" href="/login">Login &#9662;</a>
+          <div id="edrop" class="dropdown-content">
+            <a href="/logout">Logout</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+</header>
+<img class="header-border" src="../../images/brush-line.png" alt="">
+
+
+
+<body>
+
+  <!-- SCROLL TOP BUTTON -->
+  <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">Top ↑</button>
+  <script>
+    // Get the button
+    let mybutton = document.getElementById("scrollTopBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+  <div class="house-details">
+    <div class="house-title">
+      <h1 id="housename">House Name</h1>
+
+      <div style="position: static; top: 50%; transform: translateY(-50%); float: right;">
+        <a id="houseid">
+          <button type="button" style="background-color: #01bdf6c8; color: white; padding: 10px 20px; font-size: 16px;">
+            Edit House
+          </button>
+        </a>
+      </div>
+
+
+      <script> document.addEventListener('DOMContentLoaded', () => {
+          var url = location.href;
+          const queryString = url.split("?")[1];
+          const id = queryString.split("=")[1];
+          document.getElementById("houseid").href = "/houseedit?house_id=" + id;
+          
+
+        });
+      </script>
+
+
+
+      <div class="row">
+        <div>
+          <span id="ratingStars1" class="stars"></span><a id="rating1"></a>
+
+        </div>&nbsp;&nbsp;
+        <div>
+          <p id="location1">Location: </p>
+        </div>
+      </div>
+    </div>
+    <div id="rentgallery" class="gallery">
+    </div>
+
+    <script src="lightbox-plus-jquery.min.js"></script>
+
+    <h4 hidden id="price1"></h4>
+    <h4 hidden id="max_persons1"></h4>
+    <h4 hidden id="max_persons_price1"></h4>
+    <h4 hidden id="final_price"></h4>
+    <h4 hidden id="owner_id"></h4>
+    <div class="small-details">
+      <p id="downphototext"></p>
+      <h4 id="price">$ / day</h4>
+    </div>
+    <hr class="line">
+    <form class="check-form">
+      <div>
+        <label for="checkin">Check-in</label>
+
+        <input name="checkin" type="date" class="form-control" id="checkin" placeholder="Check In" required>
+      </div>
+      <div>
+        <label for="checkout">Check-out</label>
+        <input name="checkout" type="date" class="form-control" id="checkout" placeholder="Check Out" required>
+
+      </div>
+      <div class="guest-field">
+        <label for="guests">Guest</label>
+        <input type="number" name="guests" id="guests" placeholder="2 guests" required inputmode="numeric">
+      </div>
+
+      <button id="checkbutton" type="submit">Check Availability</button>
+      <p id="availabilityResult"></p>
+    </form>
+
+
+
+    <div id="extrastep" hidden>
+      <hr class="line">
+      <h2>One More Step !</h2>
+
+      <h1_left id="daysrent"></h1_left>
+      <h1_left id="max_persons"></h1_left>
+      <h1_left id="extrapeople"></h1_left>
+      <h1_left id="money_per_person"></h1_left>
+
+      <h1_left id="extramoney"></h1_left>
+      <h1_left id="dayprice"></h1_left>
+      <h1_left id="totalmoney"></h1_left>
+
+      <h1_center>Are you sure you want to rent the house? </h1_center>
+
+      <div class="button-container">
+        <button id="not_submit_rent" class="no-button">No</button>
+        <button id="submit_rent" class="yes-button">Yes</button>
+
+      </div>
+    </div>
+
+    <hr class="line">
+    <h2>House Description</h2>
+    <hr class="line">
+    <p id="housetext" class="home-desc"></p>
+    <hr class="line">
+
+
+
+    <h2>House Area Details</h2>
+    <hr class="line">
+    <ul class="details-list">
+      <li>
+        <i class="fa-solid fa-bed"></i><span id="beds"></span>
+      </li>
+      <li>
+        <i class="fa-solid fa-bath"></i><span id="bathrooms"></span>
+      </li>
+      <li>
+        <i class="fa-solid fa-check"></i><span id="rented_space_type"></span>
+      </li>
+      <li>
+        <i class="fa-sharp fa-solid fa-person-booth"></i><span id="bedrooms"></span>
+      </li>
+      <li>
+        <i class="fa-solid fa-couch"></i><span id="livingroom"></span>
+      </li>
+      <li>
+        <i class="fa-solid fa-maximize"></i><span id="area_space"></span>
+      </li>
+    </ul>
+    <hr class="line">
+
+
+    <h2>House Services</h1>
+      <hr class="line">
+      <ul class="details-list">
+        <li>
+          <i class="fa-solid fa-wifi"></i><span id="wifi"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-fan"></i><span id="aircondition"></span>
+        </li>
+        <li>
+          <i class="fa-sharp fa-solid fa-fire"></i><span id="heat"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-kitchen-set"></i><span id="kitchen"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-tv"></i><span id="tv"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-elevator"></i><span id="elevator"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-water"></i><span id="hotwater"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-parking"></i><span id="parking"></span>
+        </li>
+      </ul>
+      <hr class="line">
+
+
+      <h2>Rental Rules</h2>
+      <hr class="line">
+      <ul class="details-list">
+        <li>
+          <i class="fa-solid fa-smoking"></i><span id="smoking"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-shield-dog"></i><span id="pets"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-wine-glass"></i><span id="parties"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-calendar-days"></i><span id="mindaysrent"></span>
+        </li>
+      </ul>
+      <hr class="line">
+
+
+
+
+
+      <h2>Location on Map</h2>
+      <hr class="line">
+      <ul class="details-list">
+        <li>
+          <i class="fa-solid fa-globe"></i><span id="country"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-city"></i><span id="city"></span>
+        </li>
+        <li>
+          <i class="fa-solid fa-location-crosshairs"></i><span id="address"></span>
+        </li>
+        <li>
+          <i class="fa-regular fa-hashtag"></i><span id="postcode"></span>
+        </li>
+
+      </ul>
+      <div class="map">
+        <iframe id="map" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+      <hr class="line">
+
+
+      <div class="wrapper">
+        <div class="master">
+          <h1>Review And rating</h1>
+          <h2>How was your experience about this house?</h2>
+
+          <div class="rating-component">
+            <div class="status-msg">
+              <label>
+                <input class="rating_msg" type="hidden" name="rating_msg" value="" />
+              </label>
+            </div>
+            <div class="stars-box">
+              <i class="star fa fa-star" title="1 star" data-message="Poor" data-value="1"></i>
+              <i class="star fa fa-star" title="2 stars" data-message="Too bad" data-value="2"></i>
+              <i class="star fa fa-star" title="3 stars" data-message="Average quality" data-value="3"></i>
+              <i class="star fa fa-star" title="4 stars" data-message="Nice" data-value="4"></i>
+              <i class="star fa fa-star" title="5 stars" data-message="very good qality" data-value="5"></i>
+            </div>
+            <div class="starrate">
+              <label>
+                <input class="ratevalue" type="hidden" name="rate_value" value="" />
+              </label>
+            </div>
+          </div>
+
+          <div class="feedback-tags">
+            <div class="tags-container" data-tag-set="1">
+              <div class="question-tag">
+                Why was your experience so bad?
+              </div>
+            </div>
+            <div class="tags-container" data-tag-set="2">
+              <div class="question-tag">
+                Why was your experience so bad?
+              </div>
+
+            </div>
+
+            <div class="tags-container" data-tag-set="3">
+              <div class="question-tag">
+                Why was your average rating experience ?
+              </div>
+            </div>
+            <div class="tags-container" data-tag-set="4">
+              <div class="question-tag">
+                Why was your experience good?
+              </div>
+            </div>
+
+            <div class="tags-container" data-tag-set="5">
+              <div class="make-compliment">
+                <div class="compliment-container">
+                  Give a compliment
+                  <i class="far fa-smile-wink"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="tags-box">
+              <input type="text" class="tag form-control" name="comment" id="reviewinput"
+                placeholder="please enter your review">
+              <input type="hidden" name="product_id" value="{{ $products->id }}" />
+            </div>
+
+          </div>
+
+          <div class="button-box">
+            <input type="submit" class=" done btn btn-warning" disabled="disabled" value="Add review" />
+          </div>
+
+          <div class="submited-box">
+            <div class="loader"></div>
+            <div class="success-message">
+              Thank you!
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <script>
+
+        document.getElementById('checkbutton').addEventListener('click', (event) => {
+          var url = location.href;
+          const queryString = url.split("?")[1];
+          const id = queryString.split("=")[1];
+          const checkin = document.getElementById('checkin').value;
+          const checkout = document.getElementById('checkout').value;
+          event.preventDefault();
+          fetch("/getavailability?rent_id=" + id + "&checkin=" + checkin + "&checkout=" + checkout)
+            .then(response => response.json())
+            .then(data => {
+
+              if (data.available) {
+                document.getElementById('availabilityResult').textContent = "The listing is available !";
+
+
+                document.getElementById('extrastep').hidden = false;
+                var extra_money = 0;
+                if (document.getElementById('max_persons1').value - document.getElementById('guests').value < 0) {
+                  document.getElementById('extrapeople').textContent = "Extra persons : " + (document.getElementById('guests').value - document.getElementById('max_persons1').value);
+                  extra_money = (document.getElementById('guests').value - document.getElementById('max_persons1').value) * document.getElementById('max_persons_price1').value;
+                  document.getElementById('extramoney').textContent = "Extra money for person : " + extra_money + " $";
+                  document.getElementById('money_per_person').textContent = "Extra money / person : " + document.getElementById('max_persons_price1').value;
+                  document.getElementById('extrapeople').hidden = false;
+                  document.getElementById('extramoney').hidden = false;
+                  document.getElementById('money_per_person').hidden = false;
+                } else {
+                  document.getElementById('extrapeople').hidden = true;
+                  document.getElementById('extramoney').hidden = true;
+                  document.getElementById('money_per_person').hidden = true;
+                }
+
+                var timeDiff = new Date(checkout) - new Date(checkin);
+                var daysDifference = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+                document.getElementById('daysrent').textContent = "Days of rent : " + daysDifference;
+                document.getElementById('totalmoney').textContent = "Sum : " + (extra_money + (daysDifference * document.getElementById('price1').value)) + " $";
+                const final_price = document.getElementById('final_price');
+                final_price.value = (extra_money + (daysDifference * document.getElementById('price1').value));
+
+              } else {
+                document.getElementById('availabilityResult').textContent = "The listing is not available. Please try other dates.";
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              document.getElementById('availabilityResult').textContent = 'Error: ' + error.message;
+            });
+
+
+        });
+        document.getElementById('submit_rent').addEventListener('click', (event) => {
+          var url = location.href;
+          const queryString = url.split("?")[1];
+          const id = queryString.split("=")[1];
+          const checkin = document.getElementById('checkin').value;
+          const checkout = document.getElementById('checkout').value;
+          event.preventDefault();
+          const final_price = document.getElementById('final_price');
+          const tuser_id = document.getElementById('owner_id');
+
+          fetch("/changeavailability?rent_id=" + id + "&checkin=" + checkin + "&checkout=" + checkout + "&tuser_id=" + tuser_id.value + "&tprice=" + final_price.value)
+            .then(response => response.json())
+            .then(data => {
+
+              if (data.available) {
+                document.getElementById('extrastep').hidden = true;
+                document.getElementById('availabilityResult').textContent = "You successfully rented this listing for dates " + checkin + " up to " + checkout + " !";
+
+              } else {
+                document.getElementById('extrastep').hidden = true;
+                document.getElementById('availabilityResult').textContent = "Error.Try again!";
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              document.getElementById('availabilityResult').textContent = 'Error: ' + error.message;
+            });
+
+        });
+        document.getElementById('not_submit_rent').addEventListener('click', (event) => {
+
+          document.getElementById('extrastep').hidden = true;
+        });
+
+
+
+
+        var star_rating = 0;
+
+        $(".rating-component .star").on("mouseover", function () {
+          var onStar = parseInt($(this).data("value"), 10); //
+          star_rating = onStar;
+          $(this).parent().children("i.star").each(function (e) {
+            if (e < onStar) {
+              $(this).addClass("hover");
+            } else {
+              $(this).removeClass("hover");
+            }
+          });
+        }).on("mouseout", function () {
+          $(this).parent().children("i.star").each(function (e) {
+            $(this).removeClass("hover");
+          });
+        });
+
+        $(".rating-component .stars-box .star").on("click", function () {
+          var onStar = parseInt($(this).data("value"), 10);
+          var stars = $(this).parent().children("i.star");
+          var ratingMessage = $(this).data("message");
+
+          var msg = "";
+          if (onStar > 1) {
+            msg = onStar;
+          } else {
+            msg = onStar;
+          }
+          $('.rating-component .starrate .ratevalue').val(msg);
+
+
+
+          $(".fa-smile-wink").show();
+
+          $(".button-box .done").show();
+
+          if (onStar === 5) {
+            $(".button-box .done").removeAttr("disabled");
+          } else {
+            $(".button-box .done").attr("disabled", "true");
+          }
+
+          for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass("selected");
+          }
+
+          for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass("selected");
+          }
+
+          $(".status-msg .rating_msg").val(ratingMessage);
+          $(".status-msg").html(ratingMessage);
+          $("[data-tag-set]").hide();
+          $("[data-tag-set=" + onStar + "]").show();
+        });
+
+        $(".feedback-tags  ").on("click", function () {
+          var choosedTagsLength = $(this).parent("div.tags-box").find("input").length;
+          choosedTagsLength = choosedTagsLength + 1;
+
+          if ($(this).hasClass("choosed")) {
+            $(this).removeClass("choosed");
+            choosedTagsLength = choosedTagsLength - 2;
+          } else {
+            $(this).addClass("choosed");
+            $(".button-box .done").removeAttr("disabled");
+          }
+
+          // console.log(choosedTagsLength);
+
+          if (choosedTagsLength <= 0) {
+            $(".button-box .done").attr("enabled", "false");
+          }
+        });
+
+
+
+        $(".compliment-container .fa-smile-wink").on("click", function () {
+          $(this).fadeOut("slow", function () {
+            $(".list-of-compliment").fadeIn();
+          });
+        });
+
+
+
+        $(".done").on("click", function () {
+          $(".rating-component").hide();
+          $(".feedback-tags").hide();
+          $(".button-box").hide();
+          $(".submited-box").show();
+          $(".submited-box .loader").show();
+
+          setTimeout(function () {
+            $(".submited-box .loader").hide();
+            $(".submited-box .success-message").show();
+          }, 1500);
+
+          var url = location.href;
+          const queryString = url.split("?")[1];
+          const id = queryString.split("=")[1];
+          const reviewinput = document.getElementById('reviewinput');
+
+
+          const requestBody = {
+            reviews: reviewinput.value,
+            rating: star_rating,
+            reviewed: id,
+          };
+
+
+          // Προσθέστε το token ως cookie
+          const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+          // Εάν υπάρχει το token, τότε επιτρέψτε την αξιολόγηση
+          if (token) {
+
+
+            fetch('/addrentreview', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Προσθέστε το token στα headers
+              },
+              body: JSON.stringify(requestBody)
+            })
+              .then(response => response.text())
+              .then(result => {
+                // Εδώ μπορείτε να χειριστείτε την απάντηση από το σέρβερ
+              })
+              .catch(error => {
+                console.error(error);
+                alert('An error occurred');
+              });
+          } else {
+            alert('Πρέπει να είστε συνδεδεμένος για να κάνετε αξιολόγηση.');
+          }
+
+        });
+      </script>
+
+
+      <hr class="line">
+
+
+
+
+
+
+      <!-- Comments Box -->
+
+      <link rel="stylesheet" href="comments_style.css">
+
+      <h2>Comments about this House.</h2>
+
+      <section class="main">
+        <div class="full-boxer">
+          <div id="commentsContainer"></div>
+        </div>
+      </section>
+
+      <!-- End Comments Box -->
+
+
+      <hr class="line">
+
+
+
+
+
+      <!--First Card Listing-->
+      <div class="container-fluid p-5" style="background-color: var(--bg-color);">
+        <div class="row g-2 justify-content-center">
+          <div class="col-8 col-lg-12 text-center pb-5">
+
+            <h2>Homes You Might Like , </h2>
+            <h2> Based on your Preferences!</h2>
+          </div>
+          <div id="houseContainer" class="row"></div>
+
+
+
+
+        </div>
+      </div>
+
+
+
+      <hr class="line">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="host">
+        <a id="userphotolink" href="https://rento.panosgio.org:4000/user?id=" target="_blank"><img id="userphoto" /></a>
+
+        <div>
+          <div class="same-line">
+            <h2>Hosted by : </h2> &nbsp; &nbsp;
+            <h3><a href="https://rento.panosgio.org:4000/user?id=" id="userflname"> User</a></h3>
+          </div>
+          <p><span id="ratingStars" class="stars"></span> &nbsp; &nbsp;<a id="rating"></a> &nbsp;&nbsp; <a
+              id="reviews"></a>
+            &nbsp; &nbsp;</p>
+        </div>
+      </div>
+
+
+      <a href="#" id="contacthost" class="contact-host">Contact Host</a>
+      <a id="useremail" hidden></a>
+
+  </div>
+
+  <div class="container">
+    <div class="footer">
+
+      <hr>
+      <p>Tournis Ioannis ~ Panagiotis Giovanos 2023</p>
+    </div>
+  </div>
+
+
+  <script>
+
+    document.getElementById('contacthost').addEventListener('click', function () {
+
+      var url = '/contactus?email=' + document.getElementById('useremail').value;
+      // var url =  document.getElementById('userflname');
+
+      window.location.href = url;
+
+
+
+    });
+
+  </script>
+
+  <script src="house1.js"></script>
+</body>
+
+</html>

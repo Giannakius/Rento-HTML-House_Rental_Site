@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <link rel="stylesheet" type="text/css" href="stylecontact.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: url('../../images/background2.jpg');
+      background-size: cover;
+    }
+
+    .no-resize {
+      resize: none;
+    }
+  </style>
+</head>
+
+<header>
+
+
+  <nav>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/housesearch">Search Houses</a>
+      </li>
+      <li>
+        <a href="/contactus">Contact Us</a>
+      </li>
+      <li>
+        <div class="dropdown">
+          <a id="loginbutton" href="/login">Login &#9662;</a>
+          <div id="edrop" class="dropdown-content">
+            <a href="/logout">Logout</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+      if (token) {
+        document.getElementById('loginbutton').textContent = "Account";
+        document.getElementById('loginbutton').href = "/account";
+        document.getElementById("edrop").style.visibility = "visible";
+      }
+
+    });
+  </script>
+</header>
+
+
+
+<body>
+  <div class="containercontact">
+    <div class="title">Contact Us</div>
+    <div class="content">
+      <form action="/contactuser" method="GET">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input name="first_name" id="first_name" type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input name="last_name" id="last_name" type="text" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Sent Email To:</span>
+            <input name="email_to" id="email_to" type="text" placeholder="Enter email" required>
+            <!-- <input name="email_to" id="email_to" type="text" placeholder="contact@panosgio.org" value="contact@panosgio.org" readonly> -->
+          </div>
+          <div class="input-box">
+            <span class="details">Your Email:</span>
+            <input name="email_from" id="email_from" type="text" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone</span>
+            <input name="phone" id="phone" type="text" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Subject</span>
+            <input name="subject" id="subject" type="text" placeholder="Enter Email Sumbject" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Message</span>
+            <textarea name="message" id="message" class="no-resize" rows="6" cols="100"></textarea>
+          </div>
+
+        </div>
+
+        <script>
+          var urlParams = new URLSearchParams(window.location.search);
+          var email = urlParams.get('email');
+          var emailToInput = document.getElementById('email_to'); // Αντικαταστήστε 'yourInputElementId' με το ID του στοιχείου HTML που θέλετε να ενημερώσετε.
+        
+          if (email !== null) {
+            emailToInput.value = email;
+            emailToInput.readOnly = true;
+          } else {
+            emailToInput.value = 'contact@panosgio.org';
+          }
+        </script>
+        
+
+
+
+        <div class="button">
+          <input type="submit" value="Sumbit">
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<htm lang="en" class="no-js">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" type="text/css" href="reset.css">
+		<link rel="stylesheet" type="text/css" href="search.css">
+		<script src="js/modernizr.js"></script>
+
+		<title>Search Houses</title>
+	</head>
+
+	 
+		
+	
+		<header>
+
+			<link rel="stylesheet" type="text/css" href="stylebar.css">
+
+
+			<nav style="text-align: center;">
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/dashboard">Dashboard</a>
+					</li>
+					<li>
+						<a href="/housesearch">Search Houses</a>
+					</li>
+					<li>
+						<a href="/contactus">Contact Us</a>
+					</li>
+					<li>
+						<div class="dropdown">
+							<a id="loginbutton" href="/login">Login &#9662;</a>
+							<div id="edrop" class="dropdown-content">
+								<a href="/logout">Logout</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+			</nav>
+		</header>
+
+
+		<script>
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+				if (token) {
+					document.getElementById('loginbutton').textContent = "Account";
+					document.getElementById('loginbutton').href = "/account";
+					document.getElementById("edrop").style.visibility = "visible";
+				}
+
+			});
+		</script>
+
+		<main class="cd-main-content">
+			<div class="cd-tab-filter-wrapper">
+				<div class="cd-tab-filter">
+					<ul class="cd-filters">
+						<li class="placeholder">
+							<a data-type="all" href="#0">All</a> <!-- selected option on mobile -->
+						</li>
+						<li class="filter"><a class="selected" href="#0" data-type="all">All Houses</a></li>
+						
+					</ul> <!-- cd-filters -->
+				</div> <!-- cd-tab-filter -->
+			</div> <!-- cd-tab-filter-wrapper -->
+
+			<section class="cd-gallery">
+				<ul id="houses">
+					<li class="mix color-1 check1 radio2 option3"><img src="img/img-1.jpg" alt="Image 1"></li>
+
+				</ul>
+
+				<div class="cd-fail-message">No results found</div>
+			</section> <!-- cd-gallery -->
+
+
+			<script>
+				async function fetchUnapprovedUsers() {
+					try {
+						const response = await fetch('/mylistingsuser');
+						const unapprovedUsers = await response.json();
+						if (!response.ok) {
+							const errorResponse = await response.json();
+							throw new Error(errorResponse);
+						}
+						const gallery = document.getElementById('houses');
+
+						// Clear existing content
+						gallery.innerHTML = '';
+
+						// Add houses to the gallery
+						unapprovedUsers.forEach((user) => {
+							const houseDiv = document.createElement('div');
+							houseDiv.className = 'responsive';
+
+							const galleryDiv = document.createElement('div');
+							galleryDiv.className = 'gallery';
+
+							const { _id, image, housename, price } = user;
+
+							const imageElement = document.createElement('img');
+							imageElement.src = '/getimage/' + image[0];
+							imageElement.alt = 'House Image';
+							galleryDiv.appendChild(imageElement);
+
+							const linkElement = document.createElement('a');
+							linkElement.href = "https://rento.panosgio.org:4000/house?id=" + _id;
+							linkElement.target = "_blank";
+							linkElement.appendChild(galleryDiv);
+							houseDiv.appendChild(linkElement);
+
+							const descriptionDiv = document.createElement('div');
+							descriptionDiv.className = 'desc'; // Κρατήστε μόνο την κλάση 'desc'
+							if (price == undefined) {
+								descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br>-- $ / day';
+							} else {
+								descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br><span class="price">' + price + ' $ / day</span>';
+							}
+
+
+							houseDiv.appendChild(descriptionDiv);
+
+							gallery.appendChild(houseDiv);
+						});
+					} catch (error) {
+						// Handle error
+					}
+				}
+
+				// Call the function to fetch and display houses when the page loads
+				fetchUnapprovedUsers();
+			</script>
+
+
+
+
+
+
+
+		</main> <!-- cd-main-content -->
+
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="js/jquery.mixitup.min.js"></script>
+		<script src="js/main.js"></script> <!-- Resource jQuery -->
+
+
+		
+	
+	
+		<script>
+			const loadMoreButton = document.getElementById('loadMoreButton');
+			const loadLessButton = document.getElementById('loadLessButton');
+			const searchBox = document.getElementById('searchBox');
+			const benefitPetCheckbox = document.getElementById('benefitPet');
+			const benefitSmokingCheckbox = document.getElementById('benefitSmoking');
+			const benefitWiFiCheckbox = document.getElementById('benefitWiFi');
+			const benefitACCheckbox = document.getElementById('benefitAC');
+			const benefitHotWaterCheckbox = document.getElementById('benefitHotWater');
+			const benefitPartyCheckbox = document.getElementById('benefitParty');
+			const benefitTVCheckbox = document.getElementById('benefitTV');
+			const benefitParkingCheckbox = document.getElementById('benefitParking');
+			const benefitElevatorCheckbox = document.getElementById('benefitElevator');
+			let currentPage = 1;
+			let all = true;
+			async function fetchrents(currentPage,all) {
+				try {
+	
+					const response = await fetch('/getrents/?all='+all+'&page=' + currentPage + '&pets=' + benefitPetCheckbox.checked.toString() +
+						'&smoking=' + benefitSmokingCheckbox.checked.toString() +
+						'&wifi=' + benefitWiFiCheckbox.checked.toString() +
+						'&aircondition=' + benefitACCheckbox.checked.toString() +
+						'&hotwater=' + benefitHotWaterCheckbox.checked.toString() +
+						'&parties=' + benefitPartyCheckbox.checked.toString() +
+						'&tv=' + benefitTVCheckbox.checked.toString() +
+						'&parking=' + benefitParkingCheckbox.checked.toString() +
+						'&elevator=' + benefitElevatorCheckbox.checked.toString() +
+						'&housetext=' + searchBox.value + '&beds=1&bathrooms=1');
+					const unapprovedUsers = await response.json();
+					if (!response.ok) {
+						const errorResponse = await response.json();
+						throw new Error(errorResponse);
+					}
+					const gallery = document.getElementById('houses');
+	
+					// Clear existing content
+					gallery.innerHTML = '';
+	
+					// Add houses to the gallery
+					unapprovedUsers.forEach((user) => {
+						const houseDiv = document.createElement('div');
+						houseDiv.className = 'responsive';
+	
+						const galleryDiv = document.createElement('div');
+						galleryDiv.className = 'gallery';
+						
+						
+						const { _id, image, housename, price } = user;
+	
+						const imageElement = document.createElement('img');
+						imageElement.src = '/getimage/' + image[0];
+						imageElement.alt = 'House Image';
+						galleryDiv.appendChild(imageElement);
+	
+						const linkElement = document.createElement('a');
+						linkElement.href = "https://rento.panosgio.org:4000/house?id=" + _id;
+						linkElement.target = "_blank";
+						linkElement.appendChild(galleryDiv);
+						houseDiv.appendChild(linkElement);
+	
+						const descriptionDiv = document.createElement('div');
+						descriptionDiv.className = 'desc'; // Κρατήστε μόνο την κλάση 'desc'
+						if (price == undefined) {
+							descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br>-- $ / day';
+						} else {
+							descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br><span class="price">' + price + ' $ / day</span>';
+						}
+	
+	
+	
+	
+						houseDiv.appendChild(descriptionDiv);
+	
+						gallery.appendChild(houseDiv);
+					});
+				} catch (error) {
+					// Handle error
+				}
+			}
+	
+	
+	
+			// Call the function to fetch and display houses when the page loads
+			fetchrents();
+	
+			function loadMoreFunction() {
+				currentPage++;
+				fetchrents(currentPage,all);
+			}
+			function loadLessFunction() {
+				currentPage--;
+				fetchrents(currentPage,all);
+			}
+			searchBox.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter') {
+					fetchrents();
+				}
+			});
+	
+			
+	
+	
+		</script>
+	</body>
+	
+	</html>

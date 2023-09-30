@@ -1,0 +1,307 @@
+
+<html lang="en">
+
+<head>
+	<link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+	<meta charset="UTF-8">
+	<title>Account Settings</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/accountsettingsstyle.css">
+</head>
+
+<body>
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<div class="right-align">
+				<a href="/dashboard" class="btn btn-primary">Επιστροφή στην αρχική</a>
+			</div>
+			<h1 class="mb-5">Account Settings</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img id="userphoto" alt="Image" width="200" height="200" class="shadow">
+						</div>
+
+						<h4 id="userflname" class="text-center"></h4>
+
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
+							aria-controls="account" aria-selected="true">
+							<i class="fa fa-home text-center mr-1"></i>
+							Account
+						</a>
+						<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab"
+							aria-controls="password" aria-selected="false">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab"
+							aria-controls="security" aria-selected="false">
+							<i class="fa fa-user text-center mr-1"></i>
+							Change Profile
+						</a>
+					</div>
+				</div>
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+						<h3 class="mb-4">Account Settings</h3>
+						<form id="userForm">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>First Name</label>
+										<input id="firstName" type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Last Name</label>
+										<input id="lastName" type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Email</label>
+										<input id="email" type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Phone number</label>
+										<input id="phone" type="text" class="form-control">
+									</div>
+								</div>
+
+
+
+							</div>
+							<div>
+								<button class="btn btn-primary">Update</button>
+								<button class="btn btn-light">Cancel</button>
+							</div>
+						</form>
+						<script>
+							document.addEventListener('DOMContentLoaded', () => {
+								const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+								if (token) {
+								const form = document.getElementById('userForm');
+								const flname = document.getElementById('userflname');
+								const usphoto = document.getElementById('userphoto');
+								// Function to fetch user data and populate the form
+
+								function fetchUser() {
+									fetch('/getuser/')
+										.then(response => response.json())
+										.then(user => {
+											if (user) {
+												flname.textContent = user.firstName + " " + user.lastName;
+												form.elements.firstName.value = user.firstName;
+												form.elements.lastName.value = user.lastName;
+												form.elements.email.value = user.email;
+												form.elements.phone.value = user.phone;
+
+												const urlParams = new URLSearchParams(window.location.search);
+
+												const imageName = user.image; // Assuming the user object has the image filename
+
+												// Set the image source dynamically
+												usphoto.src = '/getimage/' + imageName;
+												//form.elements.roles.value = user.roles.join(', '); // assuming roles is an array of strings
+												// You might need to handle the image separately depending on how it is stored in the database
+												// form.elements.image.value = user.image;
+											} else {
+												alert('User not found');
+											}
+										})
+										.catch(error => {
+											console.error(error);
+											alert('An error occurred');
+										});
+								}
+
+								// Fetch user data when the page loads
+								fetchUser('');
+									} else {
+								window.location.href = "/login";
+							}
+
+
+
+							});
+						</script>
+						<script>
+							const form = document.getElementById('userForm');
+
+							form.addEventListener('submit', (event) => {
+								event.preventDefault();
+								const formData = new FormData(form);
+
+								const firstName = form.elements.firstName.value
+								const lastName = form.elements.lastName.value
+								const email = form.elements.email.value
+								const phone = form.elements.phone.value
+								const requestBody = {
+									firstName: firstName,
+									lastName: lastName,
+									email: email,
+									phone: phone
+								};
+
+								fetch('/updateuser', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json'
+									},
+									body: JSON.stringify(requestBody)
+								})
+									.then(response => response.text())
+									.then(result => {
+										console.log(result);
+										alert(result);
+										location.reload();
+									})
+									.catch(error => {
+										console.error(error);
+										alert('An error occurred');
+									});
+							});
+						</script>
+					</div>
+					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+						<h3 class="mb-4">Password Settings</h3>
+						<form id="changepasswordform">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Old password</label>
+										<input id="oldpassword" type="text" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>New password</label>
+										<input id="newpassword" type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Confirm new password</label>
+										<input id="newnewpassword" type="text" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div>
+								<button type="submit" class="btn btn-primary">Update</button>
+								<button class="btn btn-light">Cancel</button>
+							</div>
+						</form>
+					</div>
+
+					<script>
+						const passwordscriptchange = document.querySelector('#changepasswordform');
+						passwordscriptchange.addEventListener('submit', (event) => {
+							event.preventDefault();
+
+							const oldpassword = passwordscriptchange.elements.oldpassword.value
+							const newpassword = passwordscriptchange.elements.newpassword.value
+							const newnewpassword = passwordscriptchange.elements.newnewpassword.value
+
+							const requestBody = {
+								oldpassword: oldpassword,
+								newpassword: newpassword,
+								newnewpassword: newnewpassword,
+							};
+
+
+							fetch('/changepassword', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json'
+									},
+									body: JSON.stringify(requestBody)
+								})
+									.then(response => response.text())
+									.then(result => {
+										console.log(result);
+										alert(result);
+									})
+									.catch(error => {
+										console.error(error);
+										alert('An error occurred');
+									});
+							});
+
+					</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+						<h3 class="mb-4">Change Profile <Picture></Picture>
+						</h3>
+						<form id="changeimageform">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input type="file" id="image" name="image"><br>
+								</div>
+							</div>
+							<div>
+								<button type="submit" class="btn btn-primary">Update</button>
+								<button class="btn btn-light">Cancel</button>
+							</div>
+						</form>
+					</div>
+					<script>
+						const imageform = document.querySelector('#changeimageform');
+						imageform.addEventListener('submit', (event) => {
+							event.preventDefault();
+							const fd = new FormData(imageform);
+
+							fetch('/changeprofileimage', {
+								method: 'POST',
+								body: fd,
+							})
+								.then(response => response.text())
+								.then(message => {
+									alert(message);
+									imageform.reset();
+									location.reload();
+								})
+								.catch(error => {
+									console.error(error);
+									alert('An error occurred');
+								});
+						});
+
+					</script>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

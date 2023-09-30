@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+	<link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="search.css">
+	<script src="js/modernizr.js"></script>
+
+	<title>Search Houses</title>
+
+</head>
+
+<header>
+
+	<link rel="stylesheet" type="text/css" href="stylebar.css">
+
+
+	<nav style="text-align: center;">
+		<ul>
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<li>
+				<a href="/dashboard">Dashboard</a>
+			</li>
+			<li>
+				<a href="/housesearch">Search Houses</a>
+			</li>
+			<li>
+				<a href="/contactus">Contact Us</a>
+			</li>
+			<li>
+				<div class="dropdown">
+					<a id="loginbutton" href="/login">Login &#9662;</a>
+					<div id="edrop" class="dropdown-content">
+						<a href="/logout">Logout</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</nav>
+</header>
+
+
+<main class="cd-main-content">
+	<div class="cd-tab-filter-wrapper">
+		<div class="cd-tab-filter">
+			<ul class="cd-filters">
+				<li class="placeholder">
+					<a data-type="all" href="#0">All</a> <!-- selected option on mobile -->
+				</li>
+				<li id="button_allhouses" class="filter"><a class="selected" data-type="all">All Houses</a></li>
+				<li id="button_asc" class="filter" data-filter=".color-1"><a data-type="color-1">Price Ascending</a>
+				</li>
+				<li id="button_des" class="filter" data-filter=".color-2"><a data-type="color-2">Price Increasing</a>
+				</li>
+
+			</ul> <!-- cd-filters -->
+		</div> <!-- cd-tab-filter -->
+	</div> <!-- cd-tab-filter-wrapper -->
+
+
+
+
+
+
+	<section class="cd-gallery">
+		<ul id="houses" class="house-list">
+			<!-- Εδώ θα εμφανίζονται τα αποτελέσματα -->
+		</ul>
+
+	</section>
+
+
+
+
+
+	<div class="cd-filter">
+		<form>
+			<div class="cd-filter-block">
+				<h4>Search</h4>
+
+				<div class="cd-filter-content">
+					<input type="text" id="searchBox" placeholder="Type Here...">
+
+				</div> <!-- cd-filter-content -->
+
+			</div> <!-- cd-filter-block -->
+
+			<div class="cd-filter-block">
+				<h4>House Type</h4>
+
+				<div class="cd-filter-content">
+					<div class="cd-select cd-filters">
+						<select class="filter" name="selectThis" id="housetype">
+							<option value="">Choose an option</option>
+							<option value="Hotel">Hotel</option>
+							<option value="Airbnb">Airbnb</option>
+							<option value="Rent">Rent</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="cd-filter-block">
+				<h4>House Benefits</h4>
+
+				<ul class="cd-filter-content cd-filters list">
+					<li>
+						<input class="filter" data-filter="" type="checkbox" id="benefitPet">
+						<label class="checkbox-label" for="benefitPet">Pet Allowed</label>
+					</li>
+
+					<li>
+						<input class="filter" data-filter=".benefitSmoking" type="checkbox" id="benefitSmoking">
+						<label class="checkbox-label" for="benefitSmoking">Smoking Allowed</label>
+					</li>
+
+					<li>
+						<input class="filter" data-filter=".benefitWiFi" type="checkbox" id="benefitWiFi">
+						<label class="checkbox-label" for="benefitWiFi">Free WiFi</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitAC" type="checkbox" id="benefitAC">
+						<label class="checkbox-label" for="benefitAC">Air - Condition</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitHotWater" type="checkbox" id="benefitHotWater">
+						<label class="checkbox-label" for="benefitHotWater">Hot Water</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitParty" type="checkbox" id="benefitParty">
+						<label class="checkbox-label" for="benefitParty">Party Allowed</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitTV" type="checkbox" id="benefitTV">
+						<label class="checkbox-label" for="benefitTV">TV</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitParking" type="checkbox" id="benefitParking">
+						<label class="checkbox-label" for="benefitParking">Parking Space</label>
+					</li>
+					<li>
+						<input class="filter" data-filter=".benefitElevator" type="checkbox" id="benefitElevator">
+						<label class="checkbox-label" for="benefitElevator">Elevator</label>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div class="cd-filter-block">
+				<h4>Number of Beds</h4>
+
+				<div class="cd-filter-content">
+					<div class="cd-select cd-filters">
+						<select class="filter" name="selectThis" id="beds">
+							<option value="">Select an option (at least)</option>
+							<option value="1">At least 1 Bed</option>
+							<option value="2">At least 2 Beds</option>
+							<option value="3">At least 3 Beds</option>
+							<option value="4">At least 4 Beds</option>
+							<option value="5">At least 5 Beds</option>
+							<option value="6">At least 6 Beds</option>
+							<option value="7">At least 7 Beds</option>
+							<option value="8">At least 8 Beds</option>
+							<option value="9">At least 9 Beds</option>
+							<option value="10">At least 10 Beds</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="cd-filter-block">
+				<h4>Number of Rooms</h4>
+
+				<div class="cd-filter-content">
+					<div class="cd-select cd-filters">
+						<select class="filter" name="selectThis" id="bedrooms">
+							<option value="">Select an option (at least)</option>
+							<option value="1">At least 1 Room</option>
+							<option value="2">At least 2 Rooms</option>
+							<option value="3">At least 3 Rooms</option>
+							<option value="4">At least 4 Rooms</option>
+							<option value="5">At least 5 Rooms</option>
+							<option value="6">At least 6 Rooms</option>
+							<option value="7">At least 7 Rooms</option>
+							<option value="8">At least 8 Rooms</option>
+							<option value="9">At least 9 Rooms</option>
+							<option value="10">At least 10 Rooms</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="cd-filter-block">
+				<h4>Number of Bathrooms</h4>
+
+				<div class="cd-filter-content">
+					<div class="cd-select cd-filters">
+						<select class="filter" name="selectThis" id="bathrooms">
+							<option value="">Select an option (at least)</option>
+							<option value="1">At least 1 BathRoom</option>
+							<option value="2">At least 2 BathRooms</option>
+							<option value="3">At least 3 BathRooms</option>
+							<option value="4">At least 4 BathRooms</option>
+							<option value="5">At least 5 BathRooms</option>
+							<option value="6">At least 6 BathRooms</option>
+							<option value="7">At least 7 BathRooms</option>
+							<option value="8">At least 8 BathRooms</option>
+							<option value="9">At least 9 BathRooms</option>
+							<option value="10">At least 10 BathRooms</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+
+		</form>
+
+		<a href="#0" class="cd-close">Close</a>
+	</div> <!-- cd-filter -->
+
+	<a href="#0" class="cd-filter-trigger">Filters</a>
+
+
+
+</main> <!-- cd-main-content -->
+
+
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+
+
+<footer>
+	<div class="pagination-buttons">
+		<button onclick="loadLessFunction()">Previous Page</button>
+		<button onclick="loadMoreFunction()">Next Page</button>
+	</div>
+</footer>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+
+
+		const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+		if (token) {
+			document.getElementById('loginbutton').textContent = "Account";
+			document.getElementById('loginbutton').href = "/account";
+			document.getElementById("edrop").style.visibility = "visible";
+		}
+
+		let bedrooms = "";
+		let beds = "";
+		let housetype = "";
+		let city = "";
+		let checkin = "";
+		let checkout = "";
+		benefitPetCheckbox.checked = true;
+		benefitSmokingCheckbox.checked = true;
+		benefitWiFiCheckbox.checked = true;
+		benefitACCheckbox.checked = true;
+		benefitHotWaterCheckbox.checked = true;
+		benefitPartyCheckbox.checked = true;
+		benefitTVCheckbox.checked = true;
+		benefitParkingCheckbox.checked = true;
+		benefitElevatorCheckbox.checked = true;
+
+		const urlParams = new URLSearchParams(window.location.search);
+		//window.alert(urlParams.get('bedrooms'));
+
+		bedrooms = urlParams.get('bedrooms');
+		beds = urlParams.get('persons');
+		housetype = urlParams.get('housetype');
+		city = urlParams.get('city');
+		checkin = urlParams.get('checkin');
+		checkout = urlParams.get('checkout');
+		// Call the function to fetch and display houses when the page loads
+		if (bedrooms == null && beds == null) {
+			fetchrents("", "", "", "", "", "", "", "");
+		} else {
+			fetchrents("index", bedrooms, beds, "", housetype, city, checkin, checkout);
+		}
+
+
+
+
+		const searchBox = document.getElementById('searchBox'); // Επιλέξτε το πεδίο αναζήτησης με βάση το ID του
+
+		searchBox.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter') {
+				event.preventDefault(); // Αποτρέψτε την προεπιλεγμένη συμπεριφορά του πλήκτρου Enter
+				all = false;
+				fetchrents();
+			}
+		});
+	});
+</script>
+
+<script>
+
+
+	const loadMoreButton = document.getElementById('loadMoreButton');
+	const loadLessButton = document.getElementById('loadLessButton');
+	const searchBox = document.getElementById('searchBox');
+	const benefitPetCheckbox = document.getElementById('benefitPet');
+	const benefitSmokingCheckbox = document.getElementById('benefitSmoking');
+	const benefitWiFiCheckbox = document.getElementById('benefitWiFi');
+	const benefitACCheckbox = document.getElementById('benefitAC');
+	const benefitHotWaterCheckbox = document.getElementById('benefitHotWater');
+	const benefitPartyCheckbox = document.getElementById('benefitParty');
+	const benefitTVCheckbox = document.getElementById('benefitTV');
+	const benefitParkingCheckbox = document.getElementById('benefitParking');
+	const benefitElevatorCheckbox = document.getElementById('benefitElevator');
+
+	let currentPage = 1;
+	let all = true;
+	let order_mode = "asc";
+
+	function loadMoreFunction() {
+
+		currentPage++;
+		fetchrents();
+	}
+	function loadLessFunction() {
+		currentPage--;
+		fetchrents();
+	}
+	searchBox.addEventListener('keydown', (event) => {
+		if (event.key === 'Enter') {
+			all = false;
+			fetchrents();
+		}
+	});
+
+	benefitPetCheckbox.addEventListener('change', () => {
+		if (benefitPetCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitSmokingCheckbox.addEventListener('change', () => {
+		if (benefitSmokingCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitWiFiCheckbox.addEventListener('change', () => {
+		if (benefitWiFiCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitACCheckbox.addEventListener('change', () => {
+		if (benefitACCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitHotWaterCheckbox.addEventListener('change', () => {
+		if (benefitHotWaterCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitPartyCheckbox.addEventListener('change', () => {
+		if (benefitPartyCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitTVCheckbox.addEventListener('change', () => {
+		if (benefitTVCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitParkingCheckbox.addEventListener('change', () => {
+		if (benefitParkingCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+	benefitElevatorCheckbox.addEventListener('change', () => {
+		if (benefitElevatorCheckbox.checked) { all = false; fetchrents(); } else { all = false; fetchrents(); }
+	});
+
+	document.getElementById('housetype').addEventListener('change', () => {
+		all = false; housetype = document.getElementById('housetype').value; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+
+	document.getElementById('bedrooms').addEventListener('change', () => {
+		all = false; bedrooms = document.getElementById('bedrooms').value; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+
+	document.getElementById('beds').addEventListener('change', () => {
+		all = false; beds = document.getElementById('beds').value; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+
+	document.getElementById('bathrooms').addEventListener('change', () => {
+		all = false; bathrooms = document.getElementById('bathrooms').value; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+
+	document.getElementById('button_asc').addEventListener('click', () => {
+		order_mode = "asc"; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+	document.getElementById('button_des').addEventListener('click', () => {
+		order_mode = "des"; fetchrents(all, document.getElementById('bedrooms').value, document.getElementById('beds').value, document.getElementById('bathrooms').value, document.getElementById('housetype').value, "");
+	});
+	document.getElementById('button_allhouses').addEventListener('click', () => {
+		order_mode = "asc"; fetchrents("", "", "", "", "", "", "", "");
+	});
+
+	async function fetchrents(ind, bedrooms, beds, bathrooms, housetype, city, checkin, checkout) {
+		try {
+
+			//for search from index
+			if (ind === "index") {
+				all = "index";
+			}
+
+			if (bedrooms == undefined || bedrooms == "Choose an option") {
+				bedrooms = "";
+			}
+			if (beds == undefined || bedrooms == "Choose an option") {
+				beds = "";
+			}
+			if (housetype == undefined) {
+				housetype = "";
+			}
+			if (bathrooms == undefined || bedrooms == "Choose an option") {
+				bathrooms = "";
+			}
+			if (city == undefined) {
+				city = "";
+			}
+			const response = await fetch('/getrents/?all=' + all + '&page=' + currentPage + '&sort=' + order_mode + '&pets=' + benefitPetCheckbox.checked.toString() +
+				'&smoking=' + benefitSmokingCheckbox.checked.toString() +
+				'&wifi=' + benefitWiFiCheckbox.checked.toString() +
+				'&aircondition=' + benefitACCheckbox.checked.toString() +
+				'&hotwater=' + benefitHotWaterCheckbox.checked.toString() +
+				'&parties=' + benefitPartyCheckbox.checked.toString() +
+				'&tv=' + benefitTVCheckbox.checked.toString() +
+				'&parking=' + benefitParkingCheckbox.checked.toString() +
+				'&elevator=' + benefitElevatorCheckbox.checked.toString() +
+				'&housename=' + searchBox.value +
+				'&beds=' + beds.toString() +
+				'&bedrooms=' + bedrooms.toString() +
+				'&bathrooms=' + bathrooms.toString() +
+				'&housetype=' + housetype.toString() +
+				'&city=' + city.toString() +
+				'&checkin=' + checkin +
+				'&checkout=' + checkout
+			);
+			const unapprovedUsers = await response.json();
+			if (!response.ok) {
+				const errorResponse = await response.json();
+				throw new Error(errorResponse);
+			}
+			const gallery = document.getElementById('houses');
+
+			// Clear existing content
+			gallery.innerHTML = '';
+
+			if (unapprovedUsers.length === 0) {
+				// Δεν υπάρχουν αποτελέσματα, εμφανίστε το σχετικό μήνυμα
+				const noResultsMessage = document.createElement('div');
+				noResultsMessage.className = 'no-results-message';
+				noResultsMessage.textContent = 'No results found';
+				gallery.appendChild(noResultsMessage);
+			} else {
+
+				// Add houses to the gallery
+				unapprovedUsers.forEach((user, index) => {
+					if (index % 5 === 0) {
+						// Δημιουργήστε νέα γραμμή (κάθε 5 αποτελέσματα)
+						const lineBreak = document.createElement('br');
+						document.querySelector('.house-list').appendChild(lineBreak);
+					}
+
+					const houseDiv = document.createElement('div');
+					houseDiv.className = 'responsive';
+
+					const galleryDiv = document.createElement('div');
+					galleryDiv.className = 'gallery';
+
+					const { _id, image, housename, price } = user;
+
+					const imageElement = document.createElement('img');
+					imageElement.src = '/getimage/' + image[0];
+					imageElement.alt = 'House Image';
+					galleryDiv.appendChild(imageElement);
+
+					const linkElement = document.createElement('a');
+					linkElement.href = "https://rento.panosgio.org:4000/house?id=" + _id;
+					linkElement.target = "_blank";
+					linkElement.appendChild(galleryDiv);
+					houseDiv.appendChild(linkElement);
+
+					const descriptionDiv = document.createElement('div');
+					descriptionDiv.className = 'desc'; // Κρατήστε μόνο την κλάση 'desc'
+					if (price == undefined) {
+						descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br>-- $ / day';
+					} else {
+						descriptionDiv.innerHTML = '<span class="housetext">' + housename + '</span><br><span class="price">' + price + ' $ / day</span>';
+					}
+
+
+
+
+					houseDiv.appendChild(descriptionDiv);
+
+					gallery.appendChild(houseDiv);
+				});
+			}
+		} catch (error) {
+			// Handle error
+		}
+	}
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="icon" href="../../images/house icon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Rento Register </title>
+  <link rel="stylesheet" href="styleregister.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Rento Registration</div>
+    <div class="content">
+      <form action="http://localhost:4000/adduser" method="POST" enctype="multipart/form-data">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" name="firstName" id="firstName" placeholder="Enter your FirstName" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Surname Name</span>
+            <input type="text" name="lastName" id="lastName" placeholder="Enter your Surname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your Password"
+              required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone</span>
+            <input type="tel" name="phone" id="phone" placeholder="Enter Your Phone" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Image:</span>
+            <input type="file" name="image" id="image" placeholder="" required>
+          </div>
+        </div>
+        <div class="role-details">
+          <input type="radio" name="roles" id="dot-3" value="host" checked>
+          <input type="radio" name="roles" id="dot-4" value="tenant">
+          <input type="radio" name="roles" id="dot-5" value="tenanthost">
+
+          <center><span class="role-title">Choose Your Role</span></center>
+          <div class="category">
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Host</span>
+            </label>
+            <label for="dot-4">
+              <span class="dot four"></span>
+              <span class="gender">Tenant</span>
+            </label>
+            <label for="dot-5">
+              <span class="dot five"></span>
+              <span class="gender">Both</span>
+            </label>
+          </div>
+        </div>
+
+
+
+        <div class="gender-details">
+
+          <input type="radio" name="gender" id="dot-1" value="male" checked>
+          <input type="radio" name="gender" id="dot-2" value="female">
+
+          <center><span class="gender-title">Gender</span></center>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+          </div>
+
+        </div>
+
+
+
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+        <div class="return_homepage" style="display: inline-block;"> Return Back To <a href="/homepage" id="login">Homepage</a></div>
+        <div class="login_signup" style="display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Already have an account? <a href="/login" id="login">Login</a></div>
+        
+        
+      </form>
+
+      <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const formData = new FormData(form);
+
+          fetch('/adduser', {
+            method: 'POST',
+            body: formData,
+          })
+            .then(response => response.text())
+            .then(message => {
+              alert(message);
+              form.reset();
+              window.open("https://rento.panosgio.org:4000");
+            })
+            .catch(error => {
+              console.error(error);
+              alert('An error occurred');
+            });
+        });
+      </script>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

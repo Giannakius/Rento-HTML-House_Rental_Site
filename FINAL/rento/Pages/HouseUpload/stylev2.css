@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+html, body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background-image: url("../../../images/loginbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::selection {
+    background: #4158d0;
+    color: #fff;
+}
+
+.wrapper {
+    width: 600px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    
+}
+
+.wrapper .title {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(-135deg, #00c4ff, #4158d0);
+}
+
+.wrapper form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 30px;
+}
+
+.wrapper form .field {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.wrapper form .field input[type="number"],
+.wrapper form .field input[type="text"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(-135deg, #00c3ff97, #4159d068);
+    transition: background-color 0.3s ease;
+}
+
+.wrapper form .field input:focus {
+    background-color: #ebebeb;
+}
+
+.wrapper form .field label {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.wrapper form .form-left .field:last-child,
+.wrapper form .form-right .field:last-child {
+    margin-bottom: 0;
+}
+
+.wrapper form .form-left {
+    padding-right: 10px;
+}
+
+.wrapper form .form-right {
+    padding-left: 10px;
+}
+
+.wrapper form .form-center {
+    grid-column: 1 / span 2; /* Ορισμός των στηλών που θα καταλαμβάνει το στοιχείο */
+    text-align: center; /* Ευθυγράμμιση κειμένου στο κέντρο */
+  margin-top: 20px; /* Κατεβάζει το στοιχείο κατά 10px */
+  }
+
+.wrapper form .content {
+    display: flex;
+    align-items: center;
+}
+
+.wrapper form .content .checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.wrapper form .content input[type="checkbox"],
+.wrapper form .content input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.wrapper form .submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #00d9ff, #4158d0);
+    transition: background 0.3s ease;
+
+}
+
+.wrapper form .submit-btn:hover {
+    background: linear-gradient(-135deg, #00a8ff, #3948ab);
+}
+

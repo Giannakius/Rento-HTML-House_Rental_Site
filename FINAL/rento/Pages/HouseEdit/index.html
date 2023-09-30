@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Form Example</title>
+  <link rel="stylesheet" type="text/css" href="stylev2.css">
+
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+    <div id="housenameheader" class="title">Edit House</div>
+    <form action="/updaterent" method="POST" enctype="multipart/form-data">
+
+      <div class="form-left">
+        <div class="field">
+          <input type="text" name="country" id="country" class="form-control" required>
+          <label for="country">Country</label>
+        </div>
+        <div class="field">
+          <input type="text" name="postcode" id="postcode" class="form-control" required>
+          <label for="postcode">Post Code</label>
+        </div>
+        <div class="field">
+          <input type="text" name="housename" id="housename" class="form-control" required>
+          <label for="housename">House Name</label>
+        </div>
+        <div class="field">
+          <input type="number" name="beds" id="beds" class="form-control" required>
+          <label for="beds">Number of Beds</label>
+        </div>
+        <div class="field">
+          <input type="number" name="bathrooms" id="bathrooms" class="form-control" required>
+          <label for="bathrooms">Number of Bathrooms</label>
+        </div>
+        <div class="field">
+          <input type="text" name="mindaysrent" id="mindaysrent" class="form-control" required placeholder="">
+          <label for="mindaysrent">Minimum Days of Rent</label>
+        </div>
+        
+        <div class="field">
+          <input type="number" name="bedrooms" id="bedrooms" class="form-control" required>
+          <label for="bedrooms">Number of Bedrooms</label>
+        </div>
+        
+        
+
+        <div class="field">
+          <label class="form-control">Has Living Room?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="livingroom" id="livingroom_yes" value="yes" checked>
+              <label for="livingroom_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="livingroom" id="livingroom_no" value="no">
+              <label for="livingroom_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Is Smoking Allowed?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="smoking" id="smoking_yes" value="yes" checked>
+              <label for="smoking_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="smoking" id="smoking_no" value="no">
+              <label for="smoking_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Free WiFi?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="wifi" id="wifi_yes" value="yes" checked>
+              <label for="wifi_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="wifi" id="wifi_no" value="no">
+              <label for="wifi_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Air-Condition?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="aircondition" id="aircondition_yes" value="yes" checked>
+              <label for="aircondition_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="aircondition" id="aircondition_no" value="no">
+              <label for="aircondition_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Heat?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="heat" id="heat_yes" value="yes" checked>
+              <label for="heat_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="heat" id="heat_no" value="no">
+              <label for="heat_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Hot Water?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="hotwater" id="hotwater_yes" value="yes" checked>
+              <label for="hotwater_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="hotwater" id="hotwater_no" value="no">
+              <label for="hotwater_no">No</label>
+            </div>
+          </div>
+        </div>
+
+
+         
+         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+        <div class="form-group tm-form-element tm-form-element-50">
+          <label for="checkin">Add new Check In Date</label>
+          <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+          <input name="checkin" type="date" class="form-control" id="checkin"
+                 placeholder="Check In" required>
+        </div>
+ 
+ 
+
+
+      </div>
+
+      <div class="form-right">
+        <div class="field">
+          <input type="text" name="city" id="city" class="form-control" required>
+          <label for="city">City</label>
+        </div>
+        <div class="field">
+          <input type="text" name="address" id="address" class="form-control" required>
+          <label for="address">Address</label>
+        </div>
+        <div class="field">
+          <input type="text" name="neighbourhood" id="neighbourhood" class="form-control" required>
+          <label for="neighbourhood">NeighbourHood</label>
+        </div>
+        
+        
+
+        <div class="field">
+          <input type="number" name="area_space" id="area_space" class="form-control" required>
+          <label for="area_space">Area Space</label>
+        </div>
+        <div class="field">
+          <input type="number" name="price" id="price" class="form-control" required>
+          <label for="price">Rent per Day</label>
+        </div>
+        <div class="field">
+          <input type="text" name="add_persons" id="add_persons" class="form-control" required>
+          <label for="add_persons">Price for +1 Person</label>
+        </div>
+        <div class="field">
+          <input type="text" name="max_persons" id="max_persons" class="form-control" required>
+          <label for="max_persons">Max Persons in Room</label>
+        </div>
+        
+
+
+        <div class="field">
+          <label class="form-control">Is Pet Allowed?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="pets" id="pets_yes" value="yes" checked>
+              <label for="pets_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="pets" id="pets_no" value="no">
+              <label for="pets_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Are Parties Allowed?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="parties" id="parties_yes" value="yes" checked>
+              <label for="parties_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="parties" id="parties_no" value="no">
+              <label for="parties_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Kitchen?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="kitchen" id="kitchen_yes" value="yes" checked>
+              <label for="kitchen_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="kitchen" id="kitchen_no" value="no">
+              <label for="kitchen_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">TV?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="tv" id="tv_yes" value="yes" checked>
+              <label for="tv_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="tv" id="tv_no" value="no">
+              <label for="tv_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Parking Space?</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="parking" id="parking_yes" value="yes" checked>
+              <label for="parking_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="parking" id="parking_no" value="no">
+              <label for="parking_no">No</label>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="form-control">Elevator</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="elevator" id="elevator_yes" value="yes" checked>
+              <label for="elevator_yes">Yes</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="elevator" id="elevator_no" value="no">
+              <label for="elevator_no">No</label>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="form-group tm-form-element tm-form-element-50">
+          <label for="checkin">Add new Check Out Date</label>
+          <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
+          <input name="checkout" type="date" class="form-control" id="checkout"
+                 placeholder="Check out" required>
+        </div>
+
+        <script>
+          function postchanges(){
+
+          }
+          document.addEventListener('DOMContentLoaded', () => {
+            function fetchUser() {
+              var url = location.href;
+              const queryString = url.split("?")[1];
+              const id = queryString.split("=")[1];
+
+              fetch('/getrentdetails/'+id)
+                      .then(response => response.json())
+                      .then(user => {
+                        if (user) {
+                          document.getElementById("houseid").value = id;
+                          document.getElementById("city").value = user.city;
+                          document.getElementById("price").value = user.price;
+                          document.getElementById("postcode").value = user.postcode;
+                          document.getElementById("area_space").value = user.area_space;
+                          document.getElementById("mindaysrent").value = user.mindaysrent;
+                          document.getElementById("address").value = user.address;
+                          document.getElementById("housename").value = user.housename;
+                          document.getElementById("beds").value = user.beds;
+                          document.getElementById("bathrooms").value = user.bathrooms;
+                          document.getElementById("neighbourhood").value = user.neighbourhood;
+                          document.getElementById("bedrooms").value = user.bedrooms;
+                          document.getElementById("country").value = user.country;
+
+                          document.getElementById("max_persons").value = user.max_persons;
+                          document.getElementById("add_persons").value = user.add_persons;
+
+                          if (user.livingroom) {document.getElementById("livingroom_yes").checked = true;} else {document.getElementById("livingroom_no").checked = true;}
+                          if (user.elevator) {document.getElementById("elevator_yes").checked = true;} else {document.getElementById("elevator_no").checked = true;}
+                          if (user.smoking) {document.getElementById("smoking_yes").checked = true;} else {document.getElementById("smoking_no").checked = true;}
+                          if (user.wifi) {document.getElementById("wifi_yes").checked = true;} else {document.getElementById("wifi_no").checked = true;}
+                          if (user.aircondition) {document.getElementById("aircondition_yes").checked = true;} else {document.getElementById("aircondition_no").checked = true;}
+                          if (user.heat) {document.getElementById("heat_yes").checked = true;} else {document.getElementById("heat_no").checked = true;}
+                          if (user.hotwater) {document.getElementById("hotwater_yes").checked = true;} else {document.getElementById("hotwater_no").checked = true;}
+                          if (user.pets) {document.getElementById("pets_yes").checked = true;} else {document.getElementById("pets_no").checked = true;}
+                          if (user.parties) {document.getElementById("parties_yes").checked = true;} else {document.getElementById("parties_no").checked = true;}
+                          if (user.kitchen) {document.getElementById("kitchen_yes").checked = true;} else {document.getElementById("kitchen_no").checked = true;}
+                          if (user.tv) {document.getElementById("tv_yes").checked = true;} else {document.getElementById("tv_no").checked = true;}
+                          if (user.parking) {document.getElementById("parking_yes").checked = true;} else {document.getElementById("parking_no").checked = true;}
+
+                          if(user.housetype === "Hotel"){
+                            document.getElementById("housetype_hotel").checked = true;
+                          } else if(user.housetype === "Airbnb") {
+                            document.getElementById("housetype_airbnb").checked = true;
+                          } else {
+                            document.getElementById("housetype_rent").checked = true;
+                          }
+
+                          document.getElementById("housetext").value = user.housetext;
+
+                        } else {
+                          alert('User not found');
+                        }
+                      })
+                      .catch(error => {
+                        console.error(error);
+                        alert('An error occurred');
+                      });
+            }
+
+            // Fetch user data when the page loads
+            fetchUser('');
+          });
+        </script>
+
+
+      </div>
+
+      <div class="form-center">
+        <div class="field">
+          <label for="housetext">House Type</label>
+          <div class="content">
+            <div class="checkbox">
+              <input type="radio" name="housetype" id="housetype_hotel" value="Hotel" checked>
+              <label for="elevator_yes">Hotel</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="housetype" id="housetype_airbnb" value="Airbnb">
+              <label for="elevator_no">Airbnb</label>
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="housetype" id="housetype_rent" value="Rent">
+              <label for="elevator_no">Rent</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="description">
+          <label for="housetext">House Description</label>
+          <textarea id="housetext" name="housetext" rows="4" cols="35"></textarea>
+        </div>
+        <div class="field">
+          <label for="image">Upload Images</label>
+          <input required type="file" name="image" id="image" class="form-control" multiple>
+        </div>
+
+
+        <input hidden type="text" name="houseid" id="houseid" >
+        <div class="field">
+          <input type="submit" value="Submit" class="submit-btn">
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</body>
+
+</html>

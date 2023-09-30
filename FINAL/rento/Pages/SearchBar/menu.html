@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<nav>
+	<ul>
+	   <li>
+		  <a href="/">Home</a>
+	   </li>
+	   <li>
+		  <a href="/dashboard">Dashboard</a>
+	   </li>
+	   <li>
+		  <a href="/housesearch">Search Houses</a>
+	   </li>
+	   <li>
+		  <a href="/contactus">Contact Us</a>
+	   </li>
+	   <li>
+		  <div class="dropdown">
+			 <a id="loginbutton" href="/login">Login &#9662;</a>
+			 <div id="edrop" class="dropdown-content">
+				<a href="/logout">Logout</a>
+			 </div>
+		  </div>
+	   </li>
+	</ul>
+ </nav>
+
+ <img class="header-border" src="images/brush-line.png" alt="">
+
+
+   <script>
+
+      document.addEventListener('DOMContentLoaded', () => {
+         const token = document.cookie.split('; ').find(row => row.startsWith('token'));
+
+         if (token) {
+            document.getElementById('loginbutton').textContent = "Account";
+            document.getElementById('loginbutton').href = "/account";
+            document.getElementById("edrop").style.visibility = "visible";
+         }
+
+      });
+   </script>
